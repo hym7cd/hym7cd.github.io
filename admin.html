@@ -210,7 +210,6 @@ function listEditor(titleKey, path, fields, blank, tabLabel){
         return `<div class="row"><label>${f.label}</label>
           <input type="text" data-path="${p}" value="${String(val==null?'':val).replace(/"/g,'&quot;')}"></div>`;
       }).join('')}
-      `}
     </div>`).join('');
   return `<div class="item-head" style="margin-bottom:10px"><span>${titleKey}</span></div>
     ${items || '<div class="note">暂无内容，点击下方按钮添加</div>'}
