@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>内容管理 · 黄月明作品集</title>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#f4f5f7;--card:#fff;--ink:#101318;--ink2:#4a5260;--ink3:#8b93a1;
+  --line:#e4e6eb;--accent:#1f5eff;--ok:#16a34a;--warn:#d97706;--err:#dc2626;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Inter","Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+  padding-bottom:90px;
+}
+a{color:inherit}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+/* 顶栏 */
+.top{
+  position:sticky;top:0;z-index:50;background:rgba(244,245,247,.9);
+  backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);
+}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.title{font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.logo{width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,#1f5eff,#5dd0ff)}
+.actions{display:flex;align-items:center;gap:10px}
+.status{font-size:12.5px;color:var(--ink3);max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn{
+  border:1px solid var(--line);background:#fff;color:var(--ink);
+  padding:9px 16px;border-radius:99px;font-size:13.5px;cursor:pointer;
+  transition:.2s;font-family:inherit;
+}
+.btn:hover{border-color:#cfd3db;transform:translateY(-1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:500}
+.btn.primary:hover{background:#1849d6}
+.btn.danger{color:var(--err);border-color:#f3c9c9}
+.btn.sm{padding:6px 12px;font-size:12.5px}
+
+/* 登录 */
+.login{max-width:520px;margin:70px auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 32px}
+.login h1{font-size:22px;letter-spacing:-.02em;margin-bottom:8px}
+.login p{font-size:13.5px;color:var(--ink2);margin-bottom:18px}
+.login label{display:block;font-size:13px;color:var(--ink2);margin-bottom:7px}
+.login input{
+  width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;
+  font-size:14px;font-family:inherit;margin-bottom:14px;background:#fbfcfd;
+}
+.login input:focus{outline:none;border-color:var(--accent);background:#fff}
+.login .btn.primary{width:100%;padding:12px;border-radius:10px;margin-top:4px}
+.hint{font-size:12.5px;color:var(--ink3);line-height:1.75;margin-top:16px}
+.hint code{background:#f2f4f7;padding:1px 5px;border-radius:4px;font-size:12px}
+.err{color:var(--err);font-size:13px;margin-top:10px;min-height:18px}
+
+/* 编辑区 */
+#editor{margin-top:26px;display:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-bottom:16px}
+.card h2{font-size:15px;font-weight:600;letter-spacing:.02em;color:var(--ink2);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
+.row{margin-bottom:14px}
+.row label{display:block;font-size:12.5px;color:var(--ink3);margin-bottom:5px}
+.row input,.row textarea,.row select{
+  width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;
+  font-size:14px;font-family:inherit;background:#fbfcfd;color:var(--ink);line-height:1.5;
+}
+.row textarea{min-height:74px;resize:vertical}
+.row input:focus,.row textarea:focus,.row select:focus{outline:none;border-color:var(--accent);background:#fff}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.item{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px;background:#fafbfc}
+.item-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.item-head span{font-size:12.5px;color:var(--ink3);font-weight:500}
+.add{width:100%;border:1px dashed #cfd3db;background:#fff;color:var(--ink2);padding:10px;border-radius:10px;cursor:pointer;font-size:13px;font-family:inherit}
+.add:hover{border-color:var(--accent);color:var(--accent)}
+.note{font-size:12.5px;color:var(--ink3);margin-bottom:14px}
+
+/* 底栏 */
+.bottom{
+  position:fixed;left:0;right:0;bottom:0;background:rgba(244,245,247,.94);
+  backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:14px 0;
+}
+.bottom .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.bottom .msg{font-size:13px;color:var(--ink3)}
+.bottom .msg.ok{color:var(--ok)}
+.bottom .msg.err{color:var(--err)}
+@media (max-width:640px){
+  .grid2{grid-template-columns:1fr}
+  .top .wrap{height:auto;padding:14px 20px;flex-direction:column;align-items:flex-start}
+  .status{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <div class="title"><span class="logo"></span>内容管理</div>
+    <div class="actions">
+      <span class="status" id="status">未登录</span>
+      <button class="btn sm" id="previewBtn">查看网站</button>
+      <button class="btn sm danger" id="logoutBtn" style="display:none">退出</button>
+    </div>
+  </div>
+</div>
+
+<!-- 登录 -->
+<div class="wrap">
+  <div class="login" id="loginBox">
+    <h1>登录后台</h1>
+    <p>粘贴你的 GitHub 访问令牌即可登录。令牌只保存在这台设备的浏览器里，不会上传到别的地方。</p>
+    <label for="token">GitHub Token</label>
+    <input type="password" id="token" placeholder="ghp_..." autocomplete="off" spellcheck="false">
+    <button class="btn primary" id="loginBtn">登录</button>
+    <div class="err" id="loginErr"></div>
+    <div class="hint">
+      令牌获取：GitHub → Settings → Developer settings → Personal access tokens (classic) → Generate new token，勾选 <code>repo</code> 权限即可。<br>
+      保存后网站会在 1～3 分钟内自动更新，无需手动操作。
+    </div>
+  </div>
+
+  <div id="editor"></div>
+</div>
+
+<div class="bottom">
+  <div class="wrap">
+    <span class="msg" id="saveMsg">修改后点右侧保存</span>
+    <button class="btn primary" id="saveBtn">保存并发布</button>
+  </div>
+</div>
+
+<script>
+const OWNER = 'hym7cd';
+const REPO = 'hym7cd.github.io';
+const FILE = 'data.json';
+const API = 'https://api.github.com';
+const TOKEN_KEY = 'portfolio_gh_token';
+
+let token = '';
+let data = null;
+let sha = '';
+
+/* ---------- 工具 ---------- */
+const $ = id => document.getElementById(id);
+
+function b64(str){
+  const bytes = new TextEncoder().encode(str);
+  let bin = '';
+  for(let i=0;i<bytes.length;i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+
+async function api(path, opts = {}){
+  const res = await fetch(API + path, {
+    ...opts,
+    headers: {
+      'Authorization': 'token ' + token,
+      'Accept': 'application/vnd.github+json',
+      'User-Agent': 'portfolio-admin',
+      ...(opts.headers || {})
+    }
+  });
+  const body = await res.json().catch(()=> ({}));
+  if(!res.ok) throw new Error(body.message || ('HTTP ' + res.status));
+  return body;
+}
+
+function setPath(obj, path, val){
+  const keys = path.split('.');
+  let cur = obj;
+  for(let i=0;i<keys.length-1;i++) cur = cur[keys[i]];
+  cur[keys[keys.length-1]] = val;
+}
+
+function getVal(path){
+  return path.split('.').reduce((o,k)=> (o==null?undefined:o[k]), data);
+}
+
+/* ---------- 表单生成 ---------- */
+function input(label, path, type){
+  const v = getVal(path);
+  return `<div class="row"><label>${label}</label>
+    <input type="${type||'text'}" data-path="${path}" value="${String(v==null?'':v).replace(/"/g,'&quot;')}"></div>`;
+}
+function textarea(label, path, rows){
+  const v = getVal(path);
+  return `<div class="row"><label>${label}</label>
+    <textarea data-path="${path}" style="min-height:${(rows||3)*26}px">${String(v==null?'':v)}</textarea></div>`;
+}
+
+function listEditor(titleKey, path, fields, blank, tabLabel){
+  const arr = path.split('.').reduce((o,k)=>o[k], data) || [];
+  const items = arr.map((it, i) => `
+    <div class="item">
+      <div class="item-head">
+        <span>${tabLabel} ${i+1}</span>
+        <button class="btn sm danger" data-del="${path}.${i}">删除</button>
+      </div>
+      ${fields.length === 0 ? `
+        <div class="row"><textarea data-path="${path}.${i}" style="min-height:70px">${String(it==null?'':it)}</textarea></div>
+      ` : fields.map(f => {
+        const p = `${path}.${i}.${f.key}`;
+        const val = it[f.key];
+        if(f.type === 'textarea')
+          return `<div class="row"><label>${f.label}</label><textarea data-path="${p}" style="min-height:70px">${String(val==null?'':val)}</textarea></div>`;
+        if(f.type === 'list')
+          return `<div class="row"><label>${f.label}（多个用英文逗号分隔）</label>
+            <input type="text" data-path="${p}" data-list="1" value="${(val||[]).join(', ').replace(/"/g,'&quot;')}"></div>`;
+        return `<div class="row"><label>${f.label}</label>
+          <input type="text" data-path="${p}" value="${String(val==null?'':val).replace(/"/g,'&quot;')}"></div>`;
+      }).join('')}
+      `}
+    </div>`).join('');
+  return `<div class="item-head" style="margin-bottom:10px"><span>${titleKey}</span></div>
+    ${items || '<div class="note">暂无内容，点击下方按钮添加</div>'}
+    <button class="add" data-add="${path}">+ 添加一条</button>`;
+}
+
+function renderEditor(){
+  $('editor').innerHTML = `
+    <div class="card">
+      <h2>基本信息</h2>
+      ${input('站点名称 / 你的名字', 'brand')}
+      ${input('首屏小标签', 'hero.badge')}
+      <div class="grid2">
+        ${input('标题第一行', 'hero.titleA')}
+        ${input('标题第二行前缀', 'hero.titleB')}
+        ${input('高亮词', 'hero.titleC')}
+        ${input('高亮词后文字', 'hero.titleD')}
+      </div>
+      ${textarea('首屏简介', 'hero.desc', 3)}
+      <div class="grid2">
+        ${input('主按钮文字', 'hero.primary.label')}
+        ${input('主按钮链接', 'hero.primary.href')}
+        ${input('主按钮背后的标签 1', 'hero.tags.0')}
+        ${input('主按钮背后的标签 2', 'hero.tags.1')}
+        ${input('主按钮背后的标签 3', 'hero.tags.2')}
+        ${input('第二按钮文字', 'hero.secondary.label')}
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>数字条</h2>
+      ${listEditor('数字条', 'stats', [
+        {key:'value', label:'数字'},
+        {key:'label', label:'说明'}
+      ], {}, '数字')}
+    </div>
+
+    <div class="card">
+      <h2>关于我</h2>
+      ${input('小标题', 'about.tag')}
+      ${input('大标题', 'about.heading')}
+      ${listEditor('段落', 'about.paragraphs', [], {}, '段落')}
+      ${listEditor('技能条', 'about.skills', [
+        {key:'name', label:'技能名称'},
+        {key:'note', label:'右侧说明'},
+        {key:'weight', label:'进度（0-100）'}
+      ], {}, '技能')}
+      ${listEditor('标签', 'about.chips', [], {}, '标签')}
+    </div>
+
+    <div class="card">
+      <h2>作品</h2>
+      ${input('小标题', 'works.tag')}
+      ${input('大标题', 'works.heading')}
+      ${textarea('这一段说明', 'works.desc', 2)}
+      ${listEditor('项目', 'works.items', [
+        {key:'no', label:'编号（01）'},
+        {key:'title', label:'项目名称'},
+        {key:'kicker', label:'类型 / 方向'},
+        {key:'period', label:'时间'},
+        {key:'desc', label:'项目描述', type:'textarea'},
+        {key:'tags', label:'标签', type:'list'}
+      ], {}, '项目')}
+    </div>
+
+    <div class="card">
+      <h2>工作经历</h2>
+      ${input('大标题', 'experience.heading')}
+      ${listEditor('经历', 'experience.items', [
+        {key:'period', label:'时间段'},
+        {key:'company', label:'公司'},
+        {key:'role', label:'职位'},
+        {key:'desc', label:'做了什么', type:'textarea'}
+      ], {}, '经历')}
+    </div>
+
+    <div class="card">
+      <h2>联系方式</h2>
+      ${input('大标题', 'contact.heading')}
+      ${textarea('说明文字', 'contact.text', 2)}
+      ${listEditor('链接', 'contact.links', [
+        {key:'label', label:'按钮文字'},
+        {key:'href', label:'链接（mailto: 或 https://）'}
+      ], {}, '链接')}
+    </div>
+
+    <div class="card">
+      <h2>页脚</h2>
+      <div class="grid2">
+        ${input('左侧', 'footer.left')}
+        ${input('右侧', 'footer.right')}
+      </div>
+    </div>`;
+
+  bindForm();
+}
+
+/* ---------- 事件绑定 ---------- */
+function bindForm(){
+  document.querySelectorAll('#editor [data-path]').forEach(el => {
+    el.addEventListener('input', () => {
+      const path = el.dataset.path;
+      if(el.dataset.list){
+        const arr = el.value.split(',').map(s=>s.trim()).filter(Boolean);
+        setPath(data, path, arr);
+      } else {
+        const keys = path.split('.');
+        const last = keys[keys.length-1];
+        const isNum = /^\d+$/.test(last);
+        setPath(data, path, isNum ? Number(el.value) : el.value);
+      }
+      markDirty();
+    });
+  });
+
+  document.querySelectorAll('[data-add]').forEach(btn => {
+    btn.onclick = () => {
+      const path = btn.dataset.add;
+      const arr = path.split('.').reduce((o,k)=>o[k], data);
+      const blank = path.startsWith('stats') ? {value:'新数字',label:'说明'}
+        : path.startsWith('about.paragraphs') ? ''
+        : path.startsWith('about.chips') ? '新标签（逗号分隔）'
+        : path.startsWith('about.skills') ? {name:'新技能',note:'熟练',weight:70}
+        : path.startsWith('works.items') ? {no:'00',title:'新项目',kicker:'类型',period:'时间',desc:'项目描述',tags:['标签'],theme:'c1'}
+        : path.startsWith('experience.items') ? {period:'时间',company:'公司',role:'职位',desc:'工作内容'}
+        : {label:'新链接',href:'#'};
+      arr.push(blank);
+      renderEditor();
+      markDirty();
+    };
+  });
+
+  document.querySelectorAll('[data-del]').forEach(btn => {
+    btn.onclick = () => {
+      const parts = btn.dataset.del.split('.');
+      const idx = parts.pop();
+      const arrPath = parts.join('.');
+      const arr = arrPath.split('.').reduce((o,k)=>o[k], data);
+      arr.splice(Number(idx), 1);
+      renderEditor();
+      markDirty();
+    };
+  });
+}
+
+/* ---------- 登录 / 加载 / 保存 ---------- */
+function setStatus(txt, cls){
+  const s = $('status');
+  s.textContent = txt;
+  s.className = 'status' + (cls ? ' ' + cls : '');
+}
+
+async function login(t){
+  token = t;
+  setStatus('验证中…');
+  try{
+    const me = await api('/user');
+    await api(`/repos/${OWNER}/${REPO}`);
+    const res = await api(`/repos/${OWNER}/${REPO}/contents/${FILE}`);
+    sha = res.sha;
+    const raw = atob(res.content.replace(/\s/g,''));
+    const bytes = Uint8Array.from(raw, c => c.charCodeAt(0));
+    data = JSON.parse(new TextDecoder().decode(bytes));
+    localStorage.setItem(TOKEN_KEY, token);
+    $('loginBox').style.display = 'none';
+    $('editor').style.display = 'block';
+    $('logoutBtn').style.display = 'inline-flex';
+    setStatus('已登录：' + me.login);
+    renderEditor();
+    return true;
+  }catch(e){
+    setStatus('未登录');
+    $('loginErr').textContent = '登录失败：' + e.message + '（检查令牌是否有效、是否勾选了 repo 权限）';
+    token = '';
+    return false;
+  }
+}
+
+let dirty = false;
+function markDirty(){
+  dirty = true;
+  $('saveMsg').className = 'msg';
+  $('saveMsg').textContent = '有未保存的修改';
+}
+
+async function save(){
+  if(!data || !token) return;
+  $('saveMsg').className = 'msg';
+  $('saveMsg').textContent = '正在保存…';
+  try{
+    const content = b64(JSON.stringify(data, null, 2));
+    const res = await api(`/repos/${OWNER}/${REPO}/contents/${FILE}`, {
+      method: 'PUT',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        message: '更新站点内容 ' + new Date().toLocaleString('zh-CN'),
+        content,
+        sha,
+        branch: 'main'
+      })
+    });
+    sha = res.content.sha;
+    dirty = false;
+    $('saveMsg').className = 'msg ok';
+    $('saveMsg').textContent = '已保存，网站约 1～3 分钟后自动更新';
+  }catch(e){
+    $('saveMsg').className = 'msg err';
+    $('saveMsg').textContent = '保存失败：' + e.message;
+  }
+}
+
+$('loginBtn').onclick = () => {
+  const t = $('token').value.trim();
+  if(!t){ $('loginErr').textContent = '请先填入令牌'; return; }
+  $('loginErr').textContent = '';
+  login(t);
+};
+$('token').addEventListener('keydown', e => {
+  if(e.key === 'Enter') $('loginBtn').click();
+});
+$('saveBtn').onclick = save;
+$('previewBtn').onclick = () => window.open('https://' + OWNER + '.github.io/', '_blank');
+$('logoutBtn').onclick = () => {
+  if(!confirm('确定退出登录？浏览器里保存的令牌会被清除。')) return;
+  localStorage.removeItem(TOKEN_KEY);
+  location.reload();
+};
+
+/* 自动登录 */
+(function(){
+  const saved = localStorage.getItem(TOKEN_KEY);
+  if(saved){
+    $('token').value = saved;
+    login(saved);
+  }
+})();
+</script>
+</body>
+</html>
