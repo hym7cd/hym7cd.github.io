@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黄月明 · 产品作品集</title>
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+/* ===== 基础 ===== */
+:root{
+  --bg:#f4f5f7;
+  --surface:#ffffff;
+  --ink:#101318;
+  --ink-2:#4a5260;
+  --ink-3:#8b93a1;
+  --line:#e4e6eb;
+  --accent:#1f5eff;
+  --accent-soft:#eaf0ff;
+  --radius:18px;
+  --maxw:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Inter","Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:var(--accent);color:#fff}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* ===== 导航 ===== */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background .35s ease, box-shadow .35s ease, height .35s ease;
+  height:72px;display:flex;align-items:center;
+}
+.nav.solid{
+  background:rgba(244,245,247,.82);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  box-shadow:0 1px 0 var(--line);
+  height:60px;
+}
+.nav .wrap{width:100%;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.02em}
+.brand-mark{
+  width:26px;height:26px;border-radius:8px;
+  background:linear-gradient(135deg,#1f5eff,#5dd0ff);
+  position:relative;overflow:hidden;
+}
+.brand-mark::after{
+  content:"";position:absolute;inset:7px;border:2px solid #fff;border-radius:50%;
+  opacity:.9;
+}
+.links{display:flex;align-items:center;gap:28px;font-size:14px;color:var(--ink-2)}
+.links a{position:relative;padding:4px 0;transition:color .2s}
+.links a:hover{color:var(--ink)}
+.links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;background:var(--accent);
+  transition:width .25s ease;
+}
+.links a:hover::after{width:100%}
+.nav-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--ink);color:#fff;padding:9px 18px;border-radius:99px;
+  font-size:13.5px;transition:transform .2s, background .2s;
+}
+.nav-btn:hover{transform:translateY(-1px);background:#243044}
+.menu-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.menu-toggle span{display:block;width:20px;height:1.5px;background:var(--ink);margin:4px 0;transition:.25s}
+
+/* ===== Hero ===== */
+.hero{padding:150px 0 90px;position:relative}
+.hero-grid{
+  display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:center;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;
+  border:1px solid var(--line);background:#fff;
+  padding:6px 14px;border-radius:99px;margin-bottom:26px;
+}
+.dot{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.15)}
+h1{
+  font-size:clamp(38px,5.4vw,66px);
+  line-height:1.12;letter-spacing:-.03em;font-weight:700;
+  margin-bottom:22px;
+}
+h1 em{
+  font-style:normal;
+  background:linear-gradient(100deg,#1f5eff,#00b8d9 60%,#5dd0ff);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-sub{font-size:17px;color:var(--ink-2);max-width:520px;margin-bottom:34px;font-weight:400}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 24px;border-radius:99px;font-size:14.5px;font-weight:500;
+  transition:transform .2s, box-shadow .2s, background .2s, border-color .2s;
+}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 22px -10px rgba(31,94,255,.6)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(31,94,255,.7)}
+.btn-ghost{border:1px solid var(--line);background:#fff;color:var(--ink)}
+.btn-ghost:hover{transform:translateY(-2px);border-color:#cfd3db}
+.arrow{transition:transform .25s}
+.btn:hover .arrow{transform:translateX(3px)}
+
+/* Hero 视觉 */
+.hero-visual{
+  aspect-ratio:1/1;position:relative;
+  border-radius:24px;overflow:hidden;
+  background:radial-gradient(circle at 28% 22%,#eaf1ff 0%,#f7f9ff 45%,#eef0f4 100%);
+  border:1px solid #fff;
+  box-shadow:0 30px 60px -40px rgba(16,19,24,.4), inset 0 1px 0 #fff;
+}
+.dots{
+  position:absolute;inset:0;
+  background-image:radial-gradient(rgba(31,94,255,.18) 1px,transparent 1px);
+  background-size:20px 20px;
+  mask-image:radial-gradient(circle at 60% 45%,#000 20%,transparent 78%);
+  -webkit-mask-image:radial-gradient(circle at 60% 45%,#000 20%,transparent 78%);
+}
+.orbit{
+  position:absolute;border:1px solid rgba(31,94,255,.22);border-radius:50%;
+}
+.o1{width:76%;height:76%;left:12%;top:12%;animation:spin 26s linear infinite}
+.o2{width:52%;height:52%;left:24%;top:24%;border-style:dashed;animation:spin 18s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.core{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:112px;height:112px;border-radius:28px;
+  background:linear-gradient(140deg,#1f5eff,#0aa5d8);
+  box-shadow:0 20px 40px -18px rgba(31,94,255,.65), inset 0 1px 0 rgba(255,255,255,.5);
+  display:grid;place-items:center;color:#fff;
+  font-weight:700;font-size:15px;letter-spacing:.16em;
+}
+.tag-float{
+  position:absolute;background:#fff;border:1px solid var(--line);
+  border-radius:10px;padding:7px 12px;font-size:12px;color:var(--ink-2);
+  box-shadow:0 10px 24px -16px rgba(16,19,24,.5);
+}
+.t1{left:8%;top:24%;animation:float 7s ease-in-out infinite}
+.t2{right:7%;top:56%;animation:float 8s ease-in-out infinite .6s}
+.t3{left:18%;bottom:13%;animation:float 9s ease-in-out infinite .3s}
+@keyframes float{50%{transform:translateY(-9px)}}
+
+/* ===== 数据条 ===== */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  margin-top:20px;
+}
+.stat{padding:30px 10px 26px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-size:30px;letter-spacing:-.02em;font-weight:700}
+.stat span{font-size:13px;color:var(--ink-3)}
+
+/* ===== 通用 section ===== */
+section{padding:96px 0}
+.sec-head{margin-bottom:48px;max-width:640px}
+.sec-tag{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:12px}
+h2{font-size:clamp(26px,3.4vw,38px);letter-spacing:-.02em;line-height:1.25;font-weight:700}
+.sec-desc{color:var(--ink-2);margin-top:14px;font-size:15.5px}
+
+/* ===== 关于 ===== */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.about p{color:var(--ink-2);font-size:15.5px;margin-bottom:18px}
+.about p strong{color:var(--ink);font-weight:600}
+.skills{display:flex;flex-direction:column;gap:22px}
+.skill-row .top{display:flex;justify-content:space-between;font-size:14px;margin-bottom:9px;font-weight:500}
+.skill-row .top span:last-child{color:var(--ink-3);font-size:12.5px;font-weight:400}
+.bar{height:6px;background:#e7e9ee;border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#1f5eff,#4fc3ff);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:8px}
+.chip{font-size:13px;padding:7px 14px;border-radius:99px;background:#fff;border:1px solid var(--line);color:var(--ink-2)}
+
+/* ===== 作品 ===== */
+.works{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.work{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .3s ease, box-shadow .3s ease, border-color .3s;
+}
+.work:hover{transform:translateY(-4px);box-shadow:0 26px 50px -32px rgba(16,19,24,.45);border-color:#d3d8e2}
+.work-cover{
+  aspect-ratio:16/9;position:relative;overflow:hidden;
+  display:grid;place-items:center;
+}
+.work-cover .glyph{font-size:44px;font-weight:700;letter-spacing:-.03em;color:rgba(255,255,255,.95)}
+.work-cover .meta-line{
+  position:absolute;left:22px;bottom:18px;right:22px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:11.5px;color:rgba(255,255,255,.78);letter-spacing:.1em;text-transform:uppercase;
+}
+.c1{background:linear-gradient(135deg,#1a2b6d,#3b76ff)}
+.c2{background:linear-gradient(135deg,#123a35,#1fae8f)}
+.c3{background:linear-gradient(135deg,#3a2450,#9163d6)}
+.c4{background:linear-gradient(135deg,#4a2d1c,#e2784a)}
+.work-body{padding:26px 26px 28px;display:flex;flex-direction:column;gap:12px;flex:1}
+.work-body h3{font-size:19px;font-weight:600;letter-spacing:-.01em}
+.work-body p{font-size:14px;color:var(--ink-2);flex:1}
+.work-tags{display:flex;flex-wrap:wrap;gap:7px}
+.work-tags span{font-size:11.5px;color:var(--ink-3);background:#f2f4f7;padding:4px 10px;border-radius:6px}
+.work-link{font-size:13.5px;color:var(--accent);font-weight:500;display:inline-flex;align-items:center;gap:6px}
+
+/* ===== 经历 ===== */
+.timeline{border-left:1px solid var(--line);padding-left:34px;display:flex;flex-direction:column;gap:38px;margin-left:6px}
+.tl-item{position:relative}
+.tl-item::before{
+  content:"";position:absolute;left:-40px;top:7px;
+  width:11px;height:11px;border-radius:50%;background:#fff;
+  border:2px solid var(--accent);
+}
+.tl-item .when{font-size:12.5px;color:var(--ink-3);letter-spacing:.04em;margin-bottom:6px}
+.tl-item h4{font-size:17px;font-weight:600;margin-bottom:4px}
+.tl-item .role{font-size:13.5px;color:var(--accent);margin-bottom:8px}
+.tl-item p{font-size:14px;color:var(--ink-2);max-width:640px}
+
+/* ===== 联系 ===== */
+.contact{
+  background:linear-gradient(160deg,#111826 0%,#1b2740 55%,#123a5e 100%);
+  border-radius:28px;padding:64px 56px;color:#fff;position:relative;overflow:hidden;
+}
+.contact::before{
+  content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;
+  border-radius:50%;background:radial-gradient(circle,rgba(79,195,255,.35),transparent 65%);
+}
+.contact h2{color:#fff;margin-bottom:14px}
+.contact p{color:rgba(255,255,255,.66);max-width:520px;font-size:15px;margin-bottom:32px}
+.contact-links{display:flex;flex-wrap:wrap;gap:12px;position:relative}
+.contact-links a{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:12px 20px;border-radius:99px;font-size:14px;
+  border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);
+  transition:background .2s, transform .2s;
+}
+.contact-links a:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
+.contact-links a.primary{background:#fff;color:#111826;border-color:#fff;font-weight:500}
+footer{
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+  padding:40px 0 48px;font-size:13px;color:var(--ink-3);
+}
+
+/* ===== 动效 ===== */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== 响应式 ===== */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .hero-visual{max-width:420px}
+  .about{grid-template-columns:1fr;gap:44px}
+  .works{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+}
+@media (max-width:760px){
+  .links{display:none}
+  .menu-toggle{display:block}
+  .nav-btn{display:none}
+  .hero{padding:120px 0 64px}
+  section{padding:70px 0}
+  .contact{padding:44px 28px;border-radius:20px}
+  .timeline{padding-left:26px}
+  .tl-item::before{left:-32px}
+  .wrap{padding:0 20px}
+}
+/* 移动端抽屉 */
+.drawer{
+  position:fixed;inset:60px 0 auto 0;background:rgba(244,245,247,.98);
+  backdrop-filter:blur(16px);border-bottom:1px solid var(--line);
+  display:none;flex-direction:column;padding:18px 24px 26px;z-index:99;gap:4px;
+}
+.drawer.open{display:flex}
+.drawer a{padding:12px 4px;font-size:15px;color:var(--ink-2);border-bottom:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<!-- ===== 导航 ===== -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark"></span>
+      <span>黄月明</span>
+    </a>
+    <nav class="links">
+      <a href="#about">关于</a>
+      <a href="#works">作品</a>
+      <a href="#experience">经历</a>
+      <a href="#contact">联系</a>
+    </nav>
+    <a href="#contact" class="nav-btn">合作联系</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="菜单"><span></span><span></span></button>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <a href="#about">关于</a>
+  <a href="#works">作品</a>
+  <a href="#experience">经历</a>
+  <a href="#contact">联系</a>
+</div>
+
+<main id="top">
+
+  <!-- ===== Hero ===== -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> 开放新的机会与合作</div>
+          <h1>把复杂的业务<br>做成<em>可落地</em>的产品</h1>
+          <p class="hero-sub">产品经理 · 专注 B 端 / G 端系统。从需求拆解、流程设计到协议与平台落地，习惯把模糊的想法沉淀成能被开发、验收和运营使用的方案。</p>
+          <div class="hero-actions">
+            <a href="#works" class="btn btn-primary">查看作品 <span class="arrow">→</span></a>
+            <a href="#contact" class="btn btn-ghost">联系方式</a>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="dots"></div>
+          <div class="orbit o1"></div>
+          <div class="orbit o2"></div>
+          <div class="core">PM</div>
+          <div class="tag-float t1">需求 → 方案</div>
+          <div class="tag-float t2">G 端平台</div>
+          <div class="tag-float t3">数据与协议</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 数据条 ===== -->
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><b>10+</b><span>年产品与项目经验</span></div>
+      <div class="stat"><b>20+</b><span>落地项目</span></div>
+      <div class="stat"><b>3</b><span>省级监管平台</span></div>
+      <div class="stat"><b>4</b><span>专业认证</span></div>
+    </div>
+  </div>
+
+  <!-- ===== 关于 ===== -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about">
+        <div class="reveal">
+          <div class="sec-tag">About</div>
+          <h2>产品是业务和技术的翻译器</h2>
+          <p style="margin-top:18px">我是<strong>黄月明</strong>，计算机专业出身的产品经理。过去十年，我的工作集中在政企数字化转型场景：监管平台、行业应用、智能终端与数据服务。</p>
+          <p>我习惯先把业务链条画清楚——谁用、用在哪一步、数据从哪来、结果交给谁——再讨论功能与界面。面对 G 端项目，尤其重视权限体系、数据规范和多方协同的边界；面对 B 端项目，更在意流程效率与上手成本。</p>
+          <p>工作之外持续关注自动驾驶、低空经济与地理信息领域的产品机会，也喜欢把零散工具串成自己的效率系统。</p>
+        </div>
+        <div class="reveal">
+          <div class="sec-tag">Skills</div>
+          <div class="skills">
+            <div class="skill-row">
+              <div class="top"><span>需求分析与方案设计</span><span>核心能力</span></div>
+              <div class="bar"><i data-w="92"></i></div>
+            </div>
+            <div class="skill-row">
+              <div class="top"><span>G 端 / B 端平台产品</span><span>核心能力</span></div>
+              <div class="bar"><i data-w="88"></i></div>
+            </div>
+            <div class="skill-row">
+              <div class="top"><span>数据规范与接口协作</span><span>熟练</span></div>
+              <div class="bar"><i data-w="82"></i></div>
+            </div>
+            <div class="skill-row">
+              <div class="top"><span>原型与交互表达</span><span>熟练</span></div>
+              <div class="bar"><i data-w="85"></i></div>
+            </div>
+          </div>
+          <div class="chips" style="margin-top:26px">
+            <span class="chip">Axure / Figma</span>
+            <span class="chip">PRD 撰写</span>
+            <span class="chip">流程编排</span>
+            <span class="chip">数据建模</span>
+            <span class="chip">项目管理</span>
+            <span class="chip">Python 基础</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 作品 ===== -->
+  <section id="works">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">Works</div>
+        <h2>部分项目</h2>
+        <p class="sec-desc">以下为可公开描述的项目概况，敏感信息已做脱敏处理。</p>
+      </div>
+      <div class="works">
+
+        <article class="work reveal">
+          <div class="work-cover c1">
+            <div class="glyph">01</div>
+            <div class="meta-line"><span>G 端 / 监管平台</span><span>2025 — 2026</span></div>
+          </div>
+          <div class="work-body">
+            <h3>无人车运营监管平台</h3>
+            <p>面向交通运输、公安交管、测绘等多部门协同的监管底座，覆盖车辆准入、运行监测、事件处置与数据合规，支撑省—市两级平台的互联互通。</p>
+            <div class="work-tags"><span>产品架构</span><span>通讯协议</span><span>准入白名单</span></div>
+            <a href="#contact" class="work-link">了解详情 <span>→</span></a>
+          </div>
+        </article>
+
+        <article class="work reveal">
+          <div class="work-cover c2">
+            <div class="glyph">02</div>
+            <div class="meta-line"><span>G 端 / 安全监管</span><span>2024 — 2025</span></div>
+          </div>
+          <div class="work-body">
+            <h3>低空安全监管平台</h3>
+            <p>围绕低空飞行活动的全流程监管，梳理空域、航空器、飞行计划与告警处置的业务链路，形成可复用的监管能力模块。</p>
+            <div class="work-tags"><span>业务建模</span><span>告警处置</span><span>空域管理</span></div>
+            <a href="#contact" class="work-link">了解详情 <span>→</span></a>
+          </div>
+        </article>
+
+        <article class="work reveal">
+          <div class="work-cover c3">
+            <div class="glyph">03</div>
+            <div class="meta-line"><span>B 端 / 行业应用</span><span>2022 — 2024</span></div>
+          </div>
+          <div class="work-body">
+            <h3>地图数据服务平台</h3>
+            <p>面向行业客户的地图数据与能力服务平台，完成功能清单、服务目录与交付流程设计，支撑售前方案与项目落地之间的衔接。</p>
+            <div class="work-tags"><span>服务目录</span><span>售前支撑</span><span>数据服务</span></div>
+            <a href="#contact" class="work-link">了解详情 <span>→</span></a>
+          </div>
+        </article>
+
+        <article class="work reveal">
+          <div class="work-cover c4">
+            <div class="glyph">04</div>
+            <div class="meta-line"><span>工具 / 效率</span><span>持续更新</span></div>
+          </div>
+          <div class="work-body">
+            <h3>个人效率工具集</h3>
+            <p>把排期计算、文档规范、需求整理等重复工作沉淀成可复用的小工具与流程，减少沟通成本，让结论更快到达团队。</p>
+            <div class="work-tags"><span>流程设计</span><span>小工具</span><span>规范沉淀</span></div>
+            <a href="#contact" class="work-link">了解详情 <span>→</span></a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 经历 ===== -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">Experience</div>
+        <h2>工作经历</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="when">2024 — 至今</div>
+          <h4>四维图新</h4>
+          <div class="role">高级产品经理</div>
+          <p>负责政企智能化产品线，主导无人车监管平台与低空安全监管平台的需求与方案设计，参与通讯协议、准入规则与三级协同机制的制定。</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="when">2021 — 2024</div>
+          <h4>广电运通</h4>
+          <div class="role">产品经理</div>
+          <p>面向行业客户交付软硬件一体化方案，负责需求梳理、功能规划与项目协同，推进多个项目从立项到验收。</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="when">2016 — 2021</div>
+          <h4>烽火科技</h4>
+          <div class="role">产品 / 项目实施</div>
+          <p>参与行业信息化系统的产品规划与实施交付，积累 B 端系统架构、数据规范与客户协作经验。</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="when">2013 — 2016</div>
+          <h4>当虹科技</h4>
+          <div class="role">产品与技术支持</div>
+          <p>从技术支持转向产品岗位，负责需求收集、方案输出与客户问题闭环，建立对交付全流程的理解。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 联系 ===== -->
+  <section id="contact" style="padding-top:20px">
+    <div class="wrap">
+      <div class="contact reveal">
+        <h2>聊聊你的项目</h2>
+        <p>如果正在做政企数字化、监管平台或产品规划相关的事情，欢迎随时联系我。接受全职机会、项目咨询与方案讨论。</p>
+        <div class="contact-links">
+          <a href="mailto:hello@example.com" class="primary">✉ hello@example.com</a>
+          <a href="#">GitHub</a>
+          <a href="#">微信</a>
+          <a href="#">在线简历</a>
+        </div>
+      </div>
+      <footer>
+        <span>© 2026 黄月明 · 个人作品集</span>
+        <span>以简洁为原则，持续迭代</span>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<script>
+/* ===== 导航状态 ===== */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('solid', window.scrollY > 24);
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ===== 移动端菜单 ===== */
+const drawer = document.getElementById('drawer');
+document.getElementById('menuToggle').addEventListener('click', () => drawer.classList.toggle('open'));
+drawer.addEventListener('click', e => { if(e.target.tagName === 'A') drawer.classList.remove('open'); });
+
+/* ===== 滚动渐显 ===== */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if(!en.isIntersecting) return;
+    en.target.classList.add('in');
+    io.unobserve(en.target);
+  });
+}, {threshold:.14, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i) => {
+  el.style.transitionDelay = (i % 4) * 0.06 + 's';
+  io.observe(el);
+});
+
+/* ===== 技能条 ===== */
+const barIO = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if(!en.isIntersecting) return;
+    en.target.querySelectorAll('.bar i').forEach((bar,i) => {
+      setTimeout(() => bar.style.width = bar.dataset.w + '%', i*120);
+    });
+    barIO.unobserve(en.target);
+  });
+}, {threshold:.3});
+const skillBox = document.querySelector('.skills');
+if(skillBox) barIO.observe(skillBox);
+
+/* ===== 平滑锚点（兼容旧浏览器） ===== */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if(id.length < 2) return;
+    const target = document.querySelector(id);
+    if(!target) return;
+    e.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - 64;
+    window.scrollTo({top, behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
