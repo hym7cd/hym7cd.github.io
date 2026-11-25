@@ -173,7 +173,7 @@ h2{font-size:clamp(26px,3.4vw,38px);letter-spacing:-.02em;line-height:1.25;font-
 /* ===== 关于 ===== */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .about p{color:var(--ink-2);font-size:15.5px;margin-bottom:18px}
-.about p strong{color:var(--ink);font-weight:600}
+.about p b{color:var(--ink);font-weight:600}
 .skills{display:flex;flex-direction:column;gap:22px}
 .skill-row .top{display:flex;justify-content:space-between;font-size:14px;margin-bottom:9px;font-weight:500}
 .skill-row .top span:last-child{color:var(--ink-3);font-size:12.5px;font-weight:400}
@@ -286,12 +286,11 @@ footer{
 </head>
 <body>
 
-<!-- ===== 导航 ===== -->
 <header class="nav" id="nav">
   <div class="wrap">
     <a href="#top" class="brand">
       <span class="brand-mark"></span>
-      <span>黄月明</span>
+      <span id="brandName">黄月明</span>
     </a>
     <nav class="links">
       <a href="#about">关于</a>
@@ -311,261 +310,237 @@ footer{
 </div>
 
 <main id="top">
-
-  <!-- ===== Hero ===== -->
-  <div class="hero">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div>
-          <div class="eyebrow"><span class="dot"></span> 开放新的机会与合作</div>
-          <h1>把复杂的业务<br>做成<em>可落地</em>的产品</h1>
-          <p class="hero-sub">产品经理 · 专注 B 端 / G 端系统。从需求拆解、流程设计到协议与平台落地，习惯把模糊的想法沉淀成能被开发、验收和运营使用的方案。</p>
-          <div class="hero-actions">
-            <a href="#works" class="btn btn-primary">查看作品 <span class="arrow">→</span></a>
-            <a href="#contact" class="btn btn-ghost">联系方式</a>
-          </div>
-        </div>
-        <div class="hero-visual reveal">
-          <div class="dots"></div>
-          <div class="orbit o1"></div>
-          <div class="orbit o2"></div>
-          <div class="core">PM</div>
-          <div class="tag-float t1">需求 → 方案</div>
-          <div class="tag-float t2">G 端平台</div>
-          <div class="tag-float t3">数据与协议</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== 数据条 ===== -->
-  <div class="wrap">
-    <div class="stats reveal">
-      <div class="stat"><b>10+</b><span>年产品与项目经验</span></div>
-      <div class="stat"><b>20+</b><span>落地项目</span></div>
-      <div class="stat"><b>3</b><span>省级监管平台</span></div>
-      <div class="stat"><b>4</b><span>专业认证</span></div>
-    </div>
-  </div>
-
-  <!-- ===== 关于 ===== -->
-  <section id="about">
-    <div class="wrap">
-      <div class="about">
-        <div class="reveal">
-          <div class="sec-tag">About</div>
-          <h2>产品是业务和技术的翻译器</h2>
-          <p style="margin-top:18px">我是<strong>黄月明</strong>，计算机专业出身的产品经理。过去十年，我的工作集中在政企数字化转型场景：监管平台、行业应用、智能终端与数据服务。</p>
-          <p>我习惯先把业务链条画清楚——谁用、用在哪一步、数据从哪来、结果交给谁——再讨论功能与界面。面对 G 端项目，尤其重视权限体系、数据规范和多方协同的边界；面对 B 端项目，更在意流程效率与上手成本。</p>
-          <p>工作之外持续关注自动驾驶、低空经济与地理信息领域的产品机会，也喜欢把零散工具串成自己的效率系统。</p>
-        </div>
-        <div class="reveal">
-          <div class="sec-tag">Skills</div>
-          <div class="skills">
-            <div class="skill-row">
-              <div class="top"><span>需求分析与方案设计</span><span>核心能力</span></div>
-              <div class="bar"><i data-w="92"></i></div>
-            </div>
-            <div class="skill-row">
-              <div class="top"><span>G 端 / B 端平台产品</span><span>核心能力</span></div>
-              <div class="bar"><i data-w="88"></i></div>
-            </div>
-            <div class="skill-row">
-              <div class="top"><span>数据规范与接口协作</span><span>熟练</span></div>
-              <div class="bar"><i data-w="82"></i></div>
-            </div>
-            <div class="skill-row">
-              <div class="top"><span>原型与交互表达</span><span>熟练</span></div>
-              <div class="bar"><i data-w="85"></i></div>
-            </div>
-          </div>
-          <div class="chips" style="margin-top:26px">
-            <span class="chip">Axure / Figma</span>
-            <span class="chip">PRD 撰写</span>
-            <span class="chip">流程编排</span>
-            <span class="chip">数据建模</span>
-            <span class="chip">项目管理</span>
-            <span class="chip">Python 基础</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 作品 ===== -->
-  <section id="works">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sec-tag">Works</div>
-        <h2>部分项目</h2>
-        <p class="sec-desc">以下为可公开描述的项目概况，敏感信息已做脱敏处理。</p>
-      </div>
-      <div class="works">
-
-        <article class="work reveal">
-          <div class="work-cover c1">
-            <div class="glyph">01</div>
-            <div class="meta-line"><span>G 端 / 监管平台</span><span>2025 — 2026</span></div>
-          </div>
-          <div class="work-body">
-            <h3>无人车运营监管平台</h3>
-            <p>面向交通运输、公安交管、测绘等多部门协同的监管底座，覆盖车辆准入、运行监测、事件处置与数据合规，支撑省—市两级平台的互联互通。</p>
-            <div class="work-tags"><span>产品架构</span><span>通讯协议</span><span>准入白名单</span></div>
-            <a href="#contact" class="work-link">了解详情 <span>→</span></a>
-          </div>
-        </article>
-
-        <article class="work reveal">
-          <div class="work-cover c2">
-            <div class="glyph">02</div>
-            <div class="meta-line"><span>G 端 / 安全监管</span><span>2024 — 2025</span></div>
-          </div>
-          <div class="work-body">
-            <h3>低空安全监管平台</h3>
-            <p>围绕低空飞行活动的全流程监管，梳理空域、航空器、飞行计划与告警处置的业务链路，形成可复用的监管能力模块。</p>
-            <div class="work-tags"><span>业务建模</span><span>告警处置</span><span>空域管理</span></div>
-            <a href="#contact" class="work-link">了解详情 <span>→</span></a>
-          </div>
-        </article>
-
-        <article class="work reveal">
-          <div class="work-cover c3">
-            <div class="glyph">03</div>
-            <div class="meta-line"><span>B 端 / 行业应用</span><span>2022 — 2024</span></div>
-          </div>
-          <div class="work-body">
-            <h3>地图数据服务平台</h3>
-            <p>面向行业客户的地图数据与能力服务平台，完成功能清单、服务目录与交付流程设计，支撑售前方案与项目落地之间的衔接。</p>
-            <div class="work-tags"><span>服务目录</span><span>售前支撑</span><span>数据服务</span></div>
-            <a href="#contact" class="work-link">了解详情 <span>→</span></a>
-          </div>
-        </article>
-
-        <article class="work reveal">
-          <div class="work-cover c4">
-            <div class="glyph">04</div>
-            <div class="meta-line"><span>工具 / 效率</span><span>持续更新</span></div>
-          </div>
-          <div class="work-body">
-            <h3>个人效率工具集</h3>
-            <p>把排期计算、文档规范、需求整理等重复工作沉淀成可复用的小工具与流程，减少沟通成本，让结论更快到达团队。</p>
-            <div class="work-tags"><span>流程设计</span><span>小工具</span><span>规范沉淀</span></div>
-            <a href="#contact" class="work-link">了解详情 <span>→</span></a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 经历 ===== -->
-  <section id="experience">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sec-tag">Experience</div>
-        <h2>工作经历</h2>
-      </div>
-      <div class="timeline">
-        <div class="tl-item reveal">
-          <div class="when">2024 — 至今</div>
-          <h4>四维图新</h4>
-          <div class="role">高级产品经理</div>
-          <p>负责政企智能化产品线，主导无人车监管平台与低空安全监管平台的需求与方案设计，参与通讯协议、准入规则与三级协同机制的制定。</p>
-        </div>
-        <div class="tl-item reveal">
-          <div class="when">2021 — 2024</div>
-          <h4>广电运通</h4>
-          <div class="role">产品经理</div>
-          <p>面向行业客户交付软硬件一体化方案，负责需求梳理、功能规划与项目协同，推进多个项目从立项到验收。</p>
-        </div>
-        <div class="tl-item reveal">
-          <div class="when">2016 — 2021</div>
-          <h4>烽火科技</h4>
-          <div class="role">产品 / 项目实施</div>
-          <p>参与行业信息化系统的产品规划与实施交付，积累 B 端系统架构、数据规范与客户协作经验。</p>
-        </div>
-        <div class="tl-item reveal">
-          <div class="when">2013 — 2016</div>
-          <h4>当虹科技</h4>
-          <div class="role">产品与技术支持</div>
-          <p>从技术支持转向产品岗位，负责需求收集、方案输出与客户问题闭环，建立对交付全流程的理解。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 联系 ===== -->
+  <div class="hero"><div class="wrap"><div class="hero-grid" id="heroBox"></div></div></div>
+  <div class="wrap"><div class="stats reveal" id="statsBox"></div></div>
+  <section id="about"><div class="wrap"><div class="about" id="aboutBox"></div></div></section>
+  <section id="works"><div class="wrap"><div class="sec-head reveal" id="worksHead"></div><div class="works" id="worksBox"></div></div></section>
+  <section id="experience"><div class="wrap"><div class="sec-head reveal" id="expHead"></div><div class="timeline" id="expBox"></div></div></section>
   <section id="contact" style="padding-top:20px">
     <div class="wrap">
-      <div class="contact reveal">
-        <h2>聊聊你的项目</h2>
-        <p>如果正在做政企数字化、监管平台或产品规划相关的事情，欢迎随时联系我。接受全职机会、项目咨询与方案讨论。</p>
-        <div class="contact-links">
-          <a href="mailto:hello@example.com" class="primary">✉ hello@example.com</a>
-          <a href="#">GitHub</a>
-          <a href="#">微信</a>
-          <a href="#">在线简历</a>
-        </div>
-      </div>
-      <footer>
-        <span>© 2026 黄月明 · 个人作品集</span>
-        <span>以简洁为原则，持续迭代</span>
-      </footer>
+      <div class="contact reveal" id="contactBox"></div>
+      <footer id="footerBox"></footer>
     </div>
   </section>
-
 </main>
 
 <script>
-/* ===== 导航状态 ===== */
-const nav = document.getElementById('nav');
-const onScroll = () => nav.classList.toggle('solid', window.scrollY > 24);
-window.addEventListener('scroll', onScroll, {passive:true});
-onScroll();
+/* ===== 兜底数据（本地双击打开时使用，线上以 data.json 为准） ===== */
+const FALLBACK = {
+  "brand": "黄月明",
+  "hero": {
+    "badge": "开放新的机会与合作",
+    "titleA": "把复杂的业务",
+    "titleB": "做成",
+    "titleC": "可落地",
+    "titleD": "的产品",
+    "desc": "产品经理 · 专注 B 端 / G 端系统。从需求拆解、流程设计到协议与平台落地，习惯把模糊的想法沉淀成能被开发、验收和运营使用的方案。",
+    "primary": { "label": "查看作品", "href": "#works" },
+    "secondary": { "label": "联系方式", "href": "#contact" },
+    "core": "PM",
+    "tags": ["需求 → 方案", "G 端平台", "数据与协议"]
+  },
+  "stats": [
+    { "value": "10+", "label": "年产品与项目经验" },
+    { "value": "20+", "label": "落地项目" },
+    { "value": "3", "label": "省级监管平台" },
+    { "value": "4", "label": "专业认证" }
+  ],
+  "about": {
+    "tag": "About",
+    "heading": "产品是业务和技术的翻译器",
+    "paragraphs": [
+      "我是<b>黄月明</b>，计算机专业出身的产品经理。过去十年，我的工作集中在政企数字化转型场景：监管平台、行业应用、智能终端与数据服务。",
+      "我习惯先把业务链条画清楚——谁用、用在哪一步、数据从哪来、结果交给谁——再讨论功能与界面。面对 G 端项目，尤其重视权限体系、数据规范和多方协同的边界；面对 B 端项目，更在意流程效率与上手成本。",
+      "工作之外持续关注自动驾驶、低空经济与地理信息领域的产品机会，也喜欢把零散工具串成自己的效率系统。"
+    ],
+    "skills": [
+      { "name": "需求分析与方案设计", "weight": 92, "note": "核心能力" },
+      { "name": "G 端 / B 端平台产品", "weight": 88, "note": "核心能力" },
+      { "name": "数据规范与接口协作", "weight": 82, "note": "熟练" },
+      { "name": "原型与交互表达", "weight": 85, "note": "熟练" }
+    ],
+    "chips": ["Axure / Figma", "PRD 撰写", "流程编排", "数据建模", "项目管理", "Python 基础"]
+  },
+  "works": {
+    "tag": "Works",
+    "heading": "部分项目",
+    "desc": "以下为可公开描述的项目概况，敏感信息已做脱敏处理。",
+    "items": [
+      { "no": "01", "title": "无人车运营监管平台", "kicker": "G 端 / 监管平台", "period": "2025 — 2026", "desc": "面向交通运输、公安交管、测绘等多部门协同的监管底座，覆盖车辆准入、运行监测、事件处置与数据合规，支撑省—市两级平台的互联互通。", "tags": ["产品架构", "通讯协议", "准入白名单"], "theme": "c1" },
+      { "no": "02", "title": "低空安全监管平台", "kicker": "G 端 / 安全监管", "period": "2024 — 2025", "desc": "围绕低空飞行活动的全流程监管，梳理空域、航空器、飞行计划与告警处置的业务链路，形成可复用的监管能力模块。", "tags": ["业务建模", "告警处置", "空域管理"], "theme": "c2" },
+      { "no": "03", "title": "地图数据服务平台", "kicker": "B 端 / 行业应用", "period": "2022 — 2024", "desc": "面向行业客户的地图数据与能力服务平台，完成功能清单、服务目录与交付流程设计，支撑售前方案与项目落地之间的衔接。", "tags": ["服务目录", "售前支撑", "数据服务"], "theme": "c3" },
+      { "no": "04", "title": "个人效率工具集", "kicker": "工具 / 效率", "period": "持续更新", "desc": "把排期计算、文档规范、需求整理等重复工作沉淀成可复用的小工具与流程，减少沟通成本，让结论更快到达团队。", "tags": ["流程设计", "小工具", "规范沉淀"], "theme": "c4" }
+    ]
+  },
+  "experience": {
+    "tag": "Experience",
+    "heading": "工作经历",
+    "items": [
+      { "period": "2024 — 至今", "company": "四维图新", "role": "高级产品经理", "desc": "负责政企智能化产品线，主导无人车监管平台与低空安全监管平台的需求与方案设计，参与通讯协议、准入规则与三级协同机制的制定。" },
+      { "period": "2021 — 2024", "company": "广电运通", "role": "产品经理", "desc": "面向行业客户交付软硬件一体化方案，负责需求梳理、功能规划与项目协同，推进多个项目从立项到验收。" },
+      { "period": "2016 — 2021", "company": "烽火科技", "role": "产品 / 项目实施", "desc": "参与行业信息化系统的产品规划与实施交付，积累 B 端系统架构、数据规范与客户协作经验。" },
+      { "period": "2013 — 2016", "company": "当虹科技", "role": "产品与技术支持", "desc": "从技术支持转向产品岗位，负责需求收集、方案输出与客户问题闭环，建立对交付全流程的理解。" }
+    ]
+  },
+  "contact": {
+    "heading": "聊聊你的项目",
+    "text": "如果正在做政企数字化、监管平台或产品规划相关的事情，欢迎随时联系我。接受全职机会、项目咨询与方案讨论。",
+    "links": [
+      { "label": "✉ hello@example.com", "href": "mailto:hello@example.com", "primary": true },
+      { "label": "GitHub", "href": "https://github.com/hym7cd" },
+      { "label": "微信", "href": "#" }
+    ]
+  },
+  "footer": { "left": "© 2026 黄月明 · 个人作品集", "right": "以简洁为原则，持续迭代" }
+};
 
-/* ===== 移动端菜单 ===== */
-const drawer = document.getElementById('drawer');
-document.getElementById('menuToggle').addEventListener('click', () => drawer.classList.toggle('open'));
-drawer.addEventListener('click', e => { if(e.target.tagName === 'A') drawer.classList.remove('open'); });
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-/* ===== 滚动渐显 ===== */
-const io = new IntersectionObserver(entries => {
-  entries.forEach(en => {
-    if(!en.isIntersecting) return;
-    en.target.classList.add('in');
-    io.unobserve(en.target);
-  });
-}, {threshold:.14, rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach((el,i) => {
-  el.style.transitionDelay = (i % 4) * 0.06 + 's';
-  io.observe(el);
-});
+/* ===== 渲染 ===== */
+function render(d){
+  document.getElementById('brandName').textContent = d.brand || '';
+  document.title = (d.brand || '') + ' · 产品作品集';
 
-/* ===== 技能条 ===== */
-const barIO = new IntersectionObserver(entries => {
-  entries.forEach(en => {
-    if(!en.isIntersecting) return;
-    en.target.querySelectorAll('.bar i').forEach((bar,i) => {
-      setTimeout(() => bar.style.width = bar.dataset.w + '%', i*120);
+  const h = d.hero || {};
+  document.getElementById('heroBox').innerHTML = `
+    <div>
+      <div class="eyebrow"><span class="dot"></span> ${esc(h.badge)}</div>
+      <h1>${esc(h.titleA)}<br>${esc(h.titleB)}<em>${esc(h.titleC)}</em>${esc(h.titleD)}</h1>
+      <p class="hero-sub">${esc(h.desc)}</p>
+      <div class="hero-actions">
+        <a href="${esc((h.primary||{}).href || '#works')}" class="btn btn-primary">${esc((h.primary||{}).label || '查看作品')} <span class="arrow">→</span></a>
+        <a href="${esc((h.secondary||{}).href || '#contact')}" class="btn btn-ghost">${esc((h.secondary||{}).label || '联系方式')}</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="dots"></div>
+      <div class="orbit o1"></div>
+      <div class="orbit o2"></div>
+      <div class="core">${esc(h.core || 'PM')}</div>
+      ${['t1','t2','t3'].map((c,i)=>`<div class="tag-float ${c}">${esc((h.tags||[])[i] || '')}</div>`).join('')}
+    </div>`;
+
+  document.getElementById('statsBox').innerHTML = (d.stats||[]).map(s =>
+    `<div class="stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join('');
+
+  const a = d.about || {};
+  document.getElementById('aboutBox').innerHTML = `
+    <div class="reveal">
+      <div class="sec-tag">${esc(a.tag)}</div>
+      <h2>${esc(a.heading)}</h2>
+      ${(a.paragraphs||[]).map((p,i)=>`<p style="margin-top:${i===0?'18px':'0'}">${p}</p>`).join('')}
+    </div>
+    <div class="reveal">
+      <div class="sec-tag">Skills</div>
+      <div class="skills">
+        ${(a.skills||[]).map(s=>`
+          <div class="skill-row">
+            <div class="top"><span>${esc(s.name)}</span><span>${esc(s.note)}</span></div>
+            <div class="bar"><i data-w="${Number(s.weight)||0}"></i></div>
+          </div>`).join('')}
+      </div>
+      <div class="chips" style="margin-top:26px">${(a.chips||[]).map(c=>`<span class="chip">${esc(c)}</span>`).join('')}</div>
+    </div>`;
+
+  const w = d.works || {};
+  document.getElementById('worksHead').innerHTML = `
+    <div class="sec-tag">${esc(w.tag)}</div><h2>${esc(w.heading)}</h2><p class="sec-desc">${esc(w.desc)}</p>`;
+  document.getElementById('worksBox').innerHTML = (w.items||[]).map(it => `
+    <article class="work reveal">
+      <div class="work-cover ${esc(it.theme || 'c1')}">
+        <div class="glyph">${esc(it.no)}</div>
+        <div class="meta-line"><span>${esc(it.kicker)}</span><span>${esc(it.period)}</span></div>
+      </div>
+      <div class="work-body">
+        <h3>${esc(it.title)}</h3>
+        <p>${esc(it.desc)}</p>
+        <div class="work-tags">${(it.tags||[]).map(t=>`<span>${esc(t)}</span>`).join('')}</div>
+        <a href="#contact" class="work-link">了解详情 <span>→</span></a>
+      </div>
+    </article>`).join('');
+
+  const e = d.experience || {};
+  document.getElementById('expHead').innerHTML = `<div class="sec-tag">${esc(e.tag)}</div><h2>${esc(e.heading)}</h2>`;
+  document.getElementById('expBox').innerHTML = (e.items||[]).map(it => `
+    <div class="tl-item reveal">
+      <div class="when">${esc(it.period)}</div>
+      <h4>${esc(it.company)}</h4>
+      <div class="role">${esc(it.role)}</div>
+      <p>${esc(it.desc)}</p>
+    </div>`).join('');
+
+  const c = d.contact || {};
+  document.getElementById('contactBox').innerHTML = `
+    <h2>${esc(c.heading)}</h2>
+    <p>${esc(c.text)}</p>
+    <div class="contact-links">${(c.links||[]).map(l =>
+      `<a href="${esc(l.href)}"${l.primary?' class="primary"':''}${l.href && l.href.indexOf('http')===0?' target="_blank" rel="noopener"':''}>${esc(l.label)}</a>`).join('')}</div>`;
+
+  const f = d.footer || {};
+  document.getElementById('footerBox').innerHTML = `<span>${esc(f.left)}</span><span>${esc(f.right)}</span>`;
+}
+
+/* ===== 动效 ===== */
+function initMotion(){
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('solid', window.scrollY > 24);
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  const drawer = document.getElementById('drawer');
+  document.getElementById('menuToggle').onclick = () => drawer.classList.toggle('open');
+  drawer.onclick = e => { if(e.target.tagName === 'A') drawer.classList.remove('open'); };
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if(!en.isIntersecting) return;
+      en.target.classList.add('in');
+      io.unobserve(en.target);
     });
-    barIO.unobserve(en.target);
+  }, {threshold:.14, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach((el,i) => {
+    el.style.transitionDelay = (i % 4) * 0.06 + 's';
+    io.observe(el);
   });
-}, {threshold:.3});
-const skillBox = document.querySelector('.skills');
-if(skillBox) barIO.observe(skillBox);
 
-/* ===== 平滑锚点（兼容旧浏览器） ===== */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const id = a.getAttribute('href');
-    if(id.length < 2) return;
-    const target = document.querySelector(id);
-    if(!target) return;
-    e.preventDefault();
-    const top = target.getBoundingClientRect().top + window.scrollY - 64;
-    window.scrollTo({top, behavior:'smooth'});
+  const barIO = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if(!en.isIntersecting) return;
+      en.target.querySelectorAll('.bar i').forEach((bar,i) => {
+        setTimeout(() => bar.style.width = bar.dataset.w + '%', i*120);
+      });
+      barIO.unobserve(en.target);
+    });
+  }, {threshold:.3});
+  const skillBox = document.querySelector('.skills');
+  if(skillBox) barIO.observe(skillBox);
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if(id.length < 2) return;
+      const target = document.querySelector(id);
+      if(!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 64;
+      window.scrollTo({top, behavior:'smooth'});
+    });
   });
-});
+}
+
+/* ===== 启动 ===== */
+(async function(){
+  let data = FALLBACK;
+  try{
+    const res = await fetch('data.json?_=' + Date.now(), {cache:'no-store'});
+    if(res.ok){
+      const json = await res.json();
+      if(json && json.hero) data = json;
+    }
+  }catch(err){ /* 本地双击打开时回落到内置数据 */ }
+  render(data);
+  initMotion();
+})();
 </script>
 </body>
 </html>
